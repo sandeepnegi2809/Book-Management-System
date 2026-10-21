@@ -1,10 +1,35 @@
+
+import { useState } from "react";
 import "./App.css";
+import Books from "./Books";
 
 function App() {
+  const [currentPage, setCurrentPage] = useState("home");
+
+  if (currentPage === "books") {
+    return (
+      <div>
+        <button
+          onClick={() => setCurrentPage("home")}
+          style={{
+            margin: "15px 4%",
+            padding: "10px 18px",
+            border: "1px solid #2563eb",
+            borderRadius: "7px",
+            background: "white",
+            color: "#2563eb",
+            cursor: "pointer",
+          }}
+        >
+          ← Back to Home
+        </button>
+        <Books />
+      </div>
+    );
+  }
+
   return (
     <div className="app">
-
-      {/* Navbar */}
       <nav className="navbar">
         <div className="logo">
           📚 Book<span>Manager</span>
@@ -19,19 +44,14 @@ function App() {
         <button className="login-btn">Login</button>
       </nav>
 
-      {/* Hero Section */}
       <section className="hero" id="home">
-
         <div className="hero-content">
-
-          <p className="welcome-text">
-            WELCOME TO BOOKMANAGER
-          </p>
+          <p className="welcome-text">WELCOME TO BOOKMANAGER</p>
 
           <h1>
             Manage Your Books
             <br />
-            <span>Simply & Efficiently</span>
+            <span>Simply &amp; Efficiently</span>
           </h1>
 
           <p className="hero-description">
@@ -41,53 +61,37 @@ function App() {
           </p>
 
           <div className="hero-buttons">
-
-            <button className="primary-btn">
+            <button
+              className="primary-btn"
+              onClick={() => setCurrentPage("books")}
+            >
               Explore Books →
             </button>
 
-            <button className="outline-btn">
+            <button
+              className="outline-btn"
+              onClick={() => setCurrentPage("books")}
+            >
               Add New Book +
             </button>
-
           </div>
-
         </div>
 
         <div className="book-illustration">
-
-          <div className="book-icon">
-            📚
-          </div>
-
+          <div className="book-icon">📚</div>
           <h3>Your Digital Library</h3>
-
-          <p>
-            Organize your books in one place.
-          </p>
-
+          <p>Organize your books in one place.</p>
         </div>
-
       </section>
 
-      {/* Features Section */}
       <section className="features" id="features">
-
-        <p className="section-label">
-          FEATURES
-        </p>
-
-        <h2>
-          Everything You Need to Manage Books
-        </h2>
+        <p className="section-label">FEATURES</p>
+        <h2>Everything You Need to Manage Books</h2>
 
         <div className="feature-container">
-
           <div className="feature-card">
             <div className="feature-icon">📖</div>
-
             <h3>Manage Books</h3>
-
             <p>
               Easily add, update, view and delete books
               from your collection.
@@ -96,9 +100,7 @@ function App() {
 
           <div className="feature-card">
             <div className="feature-icon">🔍</div>
-
             <h3>Search Books</h3>
-
             <p>
               Quickly find books using their title,
               author or category.
@@ -107,40 +109,28 @@ function App() {
 
           <div className="feature-card">
             <div className="feature-icon">📊</div>
-
             <h3>Track Collection</h3>
-
             <p>
               Keep your complete book collection
               organized and accessible.
             </p>
           </div>
-
         </div>
-
       </section>
 
-      {/* About Section */}
       <section className="about" id="about">
-
         <h2>About This Project</h2>
-
         <p>
           BookManager is a MERN Stack based Book Management
           System designed to provide a simple interface for
           managing books and demonstrate modern web development
           concepts.
         </p>
-
       </section>
 
-      {/* Footer */}
       <footer>
-        <p>
-          © 2026 BookManager | MERN Stack Project
-        </p>
+        <p>© 2026 BookManager | MERN Stack Project</p>
       </footer>
-
     </div>
   );
 }
